@@ -34,4 +34,5 @@
         <variable name="SENDER_ID" value="" />
     </plugin>
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
+    <plugin name="cordova-plugin-camera" spec="^4.0.2" />
 </widget>

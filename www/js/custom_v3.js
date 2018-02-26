@@ -10,53 +10,6 @@ var link_pagseguro = 'https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/
 //var link_pagseguro = 'https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js';
 
 
-function clearCache() {
-    navigator.camera.cleanup();
-}
-
-var retries = 0;
-function onCapturePhoto(fileURI) {
-    var win = function (r) {
-        clearCache();
-        retries = 0;
-        alert('Done!');
-    }
-
-    var fail = function (error) {
-        if (retries == 0) {
-            retries ++
-            setTimeout(function() {
-                onCapturePhoto(fileURI)
-            }, 1000)
-        } else {
-            retries = 0;
-            clearCache();
-            alert('Ups. Something wrong happens!');
-        }
-    }
-
-    var options = new FileUploadOptions();
-    options.fileKey = "file";
-    options.fileName = fileURI.substr(fileURI.lastIndexOf('/') + 1);
-    options.mimeType = "image/jpeg";
-    options.params = {}; // if we need to send parameters to the server request
-    var ft = new FileTransfer();
-    ft.upload(fileURI, encodeURI("http://www.vipsio.com.br/admin/api_2/upload_fotos_api.php"), win, fail, options);
-}
-
-function capturePhoto() {
-    navigator.camera.getPicture(onCapturePhoto, onFail, {
-        quality: 100,
-        destinationType: destinationType.FILE_URI
-    });
-}
-
-function onFail(message) {
-    alert('Failed because: ' + message);
-}
-
-
-
 //não ta muito certo esse nome, esses são os dados para entrega sim, mas poderá ficar salvo como endereço pessoal tbm
 var dados_pessoais_entrega;
 
@@ -398,7 +351,6 @@ function carrega_bandeiras_credito() {
 }
 
 $(document).ready(function () {
-
 
     $('#menu_rapido div').click(function () {
         $('#menu_rapido div').removeClass('ativo');
@@ -1047,8 +999,7 @@ $(document).ready(function () {
         });
 
         $(document).on('click', '#mr_camera', function () {
-            alert('teste');
-            capturePhoto();          
+          app.capturaFoto();
         });
 
         $(document).on('click', '#agendar_a', function () {
