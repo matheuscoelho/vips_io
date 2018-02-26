@@ -512,7 +512,6 @@ hr{
     overflow:hidden;
     /* Agora a mágica */
     border-radius: 50%;
-    border: 1px solid #AAA;
 
 }
 .linha_pesquisa .foto_pesquisa img{
@@ -1179,9 +1178,4 @@ button{
 
 #p_total{
     color: green;
-}
-
-#div_tipo_pesquisa span{
-    margin: 10px;
-    text-transform: capitalize;
 }
