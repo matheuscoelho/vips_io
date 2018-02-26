@@ -33,15 +33,14 @@
 <!-- bootstrap-progressbar -->
 <link href="vendors/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
 
-<!-- Switchery -->
-<link href="vendors/switchery/dist/switchery.min.css" rel="stylesheet">
-
 <!-- Custom Theme Style -->
 <link href="build/css/custom.css" rel="stylesheet">
 
 <!-- select chosen -->
 <link rel="stylesheet" href="vendors/chosen/chosen.css">
 
+<!-- Switchery -->
+<link href="vendors/switchery/dist/switchery.min.css" rel="stylesheet">
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
@@ -54,7 +53,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/radio.css" />
 
-<link rel="stylesheet" type="text/css" href="css/index2.css" />
+<link rel="stylesheet" type="text/css" href="css/index3.css" />
 
 </head>
 
@@ -96,6 +95,10 @@
                                     <li>
                                         <a href="#" id="reservas_a" />
                                         <i class="fa fa-cubes"></i> Reservas</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" id="compras_a" />
+                                        <i class="fa fa-shopping-cart"></i> Compras</a>
                                     </li>
                                 </li>
                             </ul>
@@ -163,96 +166,7 @@
                     </div>-->
                     <div id="conteudo_pag">
 
-                        <div id="lay_empresa">
-                            <div id="capa_perfil" style="background-image: url(http://askanastronomer.org/img/sunset.jpg)">
-                                <div id="subcapa_perfil">
-                                    <div id="foto_perfil">
-                                        <img src="http://vipsio.com.br/img/lojas/miniatura/test1.png">
-                                    </div>
-                                    <div id="nome_perfil">Vips.IO</div>
-                                    <div id="descricao_perfil">Classificação</div>
-                                </div>
-                                <div id="menu_perfil">
-                                    <div id="linha_perfil">
-                                        <p><i class="fa fa-rss"></i></p>
-                                    </div>
-                                    <div id="menul_perfil" class="ativo2">
-                                        <p><i class="fa fa-bolt"></i></p>
-                                    </div>
-                                    <div id="fotos_perfil">
-                                        <p><i class="fa fa-folder-open-o"></i></p>
-                                    </div>
-                                </div>
-
-                                <div id="pesquisa_menu">
-                                    <span id="pesquisa_icon_menu">
-                                        <i class="fa fa-search"></i>
-                                    </span>
-                                    <span id="pesquisar_text_menu">
-                                        <input type="text" name="pesquisar_text_menu" id="pesquisar_in_menu" placeholder="Pesquisar">
-                                    </span>
-                                </div>
-
-                                <div id="menu_cardapio">
-
-                                    <form method="POST" id="pedido_form">
-                                        <input type="hidden" name="id_empresa" id="id_empresa_finaliza" value="3">
-
-                                        <div class="linha_menu">
-                                            <div class="foto_menu"><img src="http://vipsio.com.br/img/lojas/miniatura/test1.png"></div>
-                                            <div class="loja_menu">
-                                                <p class="nome_menu">Prato 1</p>
-                                                <p class="preco_menu">R$ 1,00</p>
-                                                <p class="ingredientes_menu">entre e sai sem filas</p>
-                                            </div>
-                                            <div class="op_menu">
-                                                <div class="menos_menu"><i class="fa fa-sort-desc"></i></div>
-                                                <div class="quantidade_menu"><input class="id_produto" name="id_produto[]" id_produto="1" nome_produto="teste1" preco_produto="1" type="number" value="0" min="0" step="1"></div>
-                                                <div class="mais_menu"><i class="fa fa-sort-asc"></i></div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="linha_menu">
-                                            <div class="foto_menu"><img src="http://vipsio.com.br/img/lojas/miniatura/test1.png"></div>
-                                            <div class="loja_menu">
-                                                <p class="nome_menu">Prato 2</p>
-                                                <p class="preco_menu">R$ 1,00</p>
-                                                <p class="ingredientes_menu">entre e sai sem filas</p>
-                                            </div>
-                                            <div class="op_menu">
-                                                <div class="menos_menu"><i class="fa fa-sort-desc"></i></div>
-                                                <div class="quantidade_menu"><input class="id_produto" name="id_produto[]" id_produto="2" nome_produto="teste2" preco_produto="2" type="number" value="0" min="0" step="1"></div>
-                                                <div class="mais_menu"><i class="fa fa-sort-asc"></i></div>
-                                            </div>
-                                        </div>
-
-
-                                        <div id="pagamento_pedido">
-                                            <input type="submit" id="bnt_pagamento" value="ESCOLHER FORMA DE PAGAMENTO">
-                                        </div>
-                                    </form> 
-                                </div>
-                            </div>
-                            <!-- /fim conteudo -->
-                        </div>
-
-                        <!-- TELA METODO DE PAGAMENTO -->
-                        <div id="metodo_de_pagamento" class="view" style="display: none;" tela="6">
-                            <div id="metodo_de_pagamento_div">
-
-                                <form method="POST" id="cartoes_form">
-                                    <div id="bandeiras_credito"></div>
-
-                                    <button type="submit" id="pagar_cartao">Pagar com cartão</button>
-                                </form>
-                                <form method="POST" id="dinheiro_form">
-                                    <button type="submit" id="pagar_dinheiro">Pagar em dinheiro</button>
-                                </form>
-
-                            </div>
-                        </div>
-
+                    
 
                         <div id="telas_container" class="app" onclick="">
 
@@ -366,55 +280,10 @@
                                 </form>
                             </div>
 
-                            <!-- TELA DE PESQUISA -->
-                            <div id="pesquisa" class="view" style="display: none;" tela="6">
-                                <div id="pesquisar_div">
-                                    <span id="pesquisa_icon">
-                                        <i class="fa fa-search"></i>
-                                    </span>
-                                    <span id="pesquisar_text">
-                                        <input type="text" name="pesquisar_text" id="pesquisar_in" placeholder="Pesquisar">
-                                    </span>
-                                    <hr>
-                                </div>
-
-                                <div id="pesquisa_conteudo">
-                                    <div class="linha_pesquisa">
-                                        <div class="foto_pesquisa"><img src="http://vipsio.com.br/img/lojas/miniatura/test1.png"></div>
-                                        <div class="loja_pesquisa">
-                                            <p class="nome_pesquisa">Vips.io</p>
-                                            <p class="tags_pesquisa">entre e sai sem filas</p>
-                                        </div>  
-                                    </div>
-
-                                    <div class="linha_pesquisa">
-                                        <div class="foto_pesquisa"><img src="http://vipsio.com.br/img/lojas/miniatura/test2.png"></div>
-                                        <div class="loja_pesquisa">
-                                            <p class="nome_pesquisa">Malucao</p>
-                                            <p class="tags_pesquisa">sou loção</p>
-                                        </div>  
-                                    </div>
-
-                                    <div class="linha_pesquisa">
-                                        <div class="foto_pesquisa"><img src="http://vipsio.com.br/img/lojas/miniatura/test3.png"></div>
-                                        <div class="loja_pesquisa">
-                                            <p class="nome_pesquisa">funfou</p>
-                                            <p class="tags_pesquisa">funfando</p>
-                                        </div>  
-                                    </div>
-                                </div>
-
-                            </div>
-
 
 
                         </div>
 
-                        <!-- PAGSEGURO -->
-                        <script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js">
-                        </script>
-
-                        <!-- FIM PAGSEGURO -->
 
                         <!-- Bootstrap -->
                         <script src="vendors/bootstrap/bootstrap.min.js"></script>
@@ -431,11 +300,6 @@
                         <!-- Custom Theme Scripts -->
                         <script src="build/js/custom.js"></script>
 
-                        <!-- Switchery -->
-                        <script src="vendors/switchery/dist/switchery.min.js"></script>
-                        <!-- Datatables -->
-
-
                         <!-- select chosen -->   
                         <script src="vendors/chosen/chosen.jquery.js" type="text/javascript"></script>
                         <script src="vendors/chosen/docsupport/prism.js" type="text/javascript" charset="utf-8"></script>
@@ -446,20 +310,12 @@
                         <script src="http://vipsio.com.br:3001/socket.io/socket.io.js"></script>
                         <script src="js/cidades.js"></script>
                         <script src="js/estados.js"></script>
-                        <script src="js/custom3.js"></script>
-                        <script src="js/pesquisar.js"></script>
+                        <script src="js/custom_v3.js"></script>
+
+                        <!-- Switchery -->
+                        <script src="vendors/switchery/dist/switchery.min.js"></script>
 
                         <script type="text/javascript">
-                        var config = {
-                            '.chosen-select'           : {},
-                            '.chosen-select-deselect'  : {allow_single_deselect:true},
-                            '.chosen-select-no-single' : {disable_search_threshold:10},
-                            '.chosen-select-no-results': {no_results_text:'Oops, nada encontrado!'},
-                            '.chosen-select-width'     : {width:"100%"}
-                        }
-                        for (var selector in config) {
-                            $(selector).chosen(config[selector]);
-                        }
                         </script>
 
                     </body >

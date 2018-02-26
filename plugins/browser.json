@@ -13,7 +13,17 @@
     "phonegap-plugin-push": {
       "SENDER_ID": "249880936399",
       "PACKAGE_NAME": "com.phonegap.helloworld"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.phonegap.sremilio"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.phonegap.sremilio"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.phonegap.sremilio"
+    }
+  }
 }
