@@ -27,6 +27,7 @@ function clearCache() {
     navigator.camera.cleanup();
 }
 
+
 var retries = 0;
 function onCapturePhoto(fileURI) {
     var win = function (r) {
