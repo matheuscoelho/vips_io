@@ -9,6 +9,14 @@ socket.on('notificacoes_cliente', function (mensagem) {
 var link_pagseguro = 'https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js';
 //var link_pagseguro = 'https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js';
 
+
+
+
+
+
+
+
+
 //não ta muito certo esse nome, esses são os dados para entrega sim, mas poderá ficar salvo como endereço pessoal tbm
 var dados_pessoais_entrega;
 
@@ -117,21 +125,49 @@ var html_lay_empresa = '<div id="lay_empresa" tela="8">' +
     '</div>' +
     '</div>';
 
+var html_lay_cliente = '<div id="lay_cliente">' +
+                            '<div id="capa_perfil">' +
+                                '<div id="subcapa_perfil">' +
+                                    '<div id="foto_perfil">' +
+                                        '<img src="">' +
+                                    '</div>' +
+                                    '<div id="nome_perfil"></div>' +
+                                    '<div id="descricao_perfil"></div>' +
+                                '</div>' +
+                                '<div id="menu_perfil">' +
+                                    '<div id="linha_perfil">' +
+                                        '<p><i class="fa fa-rss"></i></p>' +
+                                    '</div>' +
+                                    '<div id="menul_perfil" class="ativo2">' +
+                                        '<p><i class="fa fa-bolt"></i></p>' +
+                                    '</div>' +
+                                    '<div id="fotos_perfil">' +
+                                        '<p><i class="fa fa-folder-open-o"></i></p>' +
+                                    '</div>' +
+                                '</div>' +
+                                '<div id="fotos_cliente">' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
+
 //pagamento_pedido  pedido_form
 
 var html_pesquisa = '<div id="pesquisa" class="view" tela="6">' +
-    '<div id="pesquisar_div">' +
-    '<span id="pesquisa_icon">' +
-    '<i class="fa fa-search"></i>' +
-    '</span>' +
-    '<span id="pesquisar_text">' +
-    '<input type="text" name="pesquisar_text" id="pesquisar_in" placeholder="Pesquisar">' +
-    '</span>' +
-    '<hr>' +
-    '</div>' +
-    '<div id="pesquisa_conteudo">' +
-    '</div>' +
-    '</div>';
+                        '<div id="pesquisar_div">' +
+                            '<span id="pesquisa_icon">' +
+                                '<i class="fa fa-search"></i>' +
+                            '</span>' +
+                            '<span id="pesquisar_text">' +
+                                '<input type="text" name="pesquisar_text" id="pesquisar_in" placeholder="Pesquisar">' +
+                            '</span>' +
+                            '<hr>' +
+                        '</div>' +
+                        '<div id="div_tipo_pesquisa">' +
+                            '<span>Empresas <input name="pesquisa_empresas" id="pesquisa_empresas" type="checkbox" class="js-switch" checked /></span>' +
+                            '<span>Pessoas <input name="pesquisa_clientes" id="pesquisa_clientes" type="checkbox" class="js-switch" /></span>' +
+                        '<div>'+
+                        '<div id="pesquisa_conteudo"></div>' +
+                    '</div>';
 
 //balcao_form  mesa_form   casa_form
 var html_dados_entrega_1 = '<div id="dados_entrega_1">' +
@@ -162,6 +198,8 @@ var html_finaliza = '<div id="finaliza_pedido">' +
 var html_div_proximo2 = '<div id="div_proximo2">' +
     '<p>PRÓXIMO</p>' +
     '</div>';
+
+var carregando = '<center><img src="build/images/loading.gif" style="width:20%;"></center>';
 
 var salvar_dados = '';
 
@@ -318,7 +356,6 @@ function carrega_bandeiras_credito() {
         });
     });
 }
-
 
 $(document).ready(function () {
 
@@ -956,14 +993,30 @@ $(document).ready(function () {
             });
         });
 
-
         $(document).on('click', '#mr_pesquisa', function () {
             $('#conteudo_pag').html(html_pesquisa);
+
+            var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
+            elems.forEach(function(html) {
+              var switchery = new Switchery(html, { size: 'small' });
+            });
+
             $('#pesquisar_text input').focus();
+        });
+
+        $(document).on('click', '#mr_camera', function () {
+           
         });
 
         $(document).on('click', '#agendar_a', function () {
             $('#conteudo_pag').html(html_pesquisa);
+
+            var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
+            elems.forEach(function(html) {
+              var switchery = new Switchery(html, { size: 'small' });
+            });
 
             var elems = Array.prototype.slice.call(document.querySelectorAll('#conteudo_pag input[type="checkbox"]'));
             elems.forEach(function (html) {
@@ -1034,57 +1087,100 @@ $(document).ready(function () {
 
         $(document).on('click', '.linha_pesquisa', function () {
 
-            var id_empresa = $(this).attr('id_empresa');
-            jQuery.ajax({
-                type: "POST",
-                url: "http://vipsio.com.br/admin/api_2/consultar_empresa_api.php",
-                data: { id_empresa: id_empresa, usuario: localStorage.usuario, token: localStorage.token },
-                success: function (data) {
-                    var resultado = JSON.parse(data);
-                    //esse result vemm com os dados da empresa
-                    if (resultado['return'] == 'sucesso') {
+            var tipo = $(this).attr('tipo');
+
+            if(tipo == 'empresa'){
+                var id_empresa = $(this).attr('id_empresa');
+                jQuery.ajax({
+                    type: "POST",
+                    url: "http://vipsio.com.br/admin/api_2/consultar_empresa_api.php",
+                    data: { id_empresa: id_empresa, usuario: localStorage.usuario, token: localStorage.token },
+                    success: function (data) {
+                        var resultado = JSON.parse(data);
+                        //esse result vemm com os dados da empresa
+                        if (resultado['return'] == 'sucesso') {
 
 
-                        $('#conteudo_pag').html(html_lay_empresa);
+                            $('#conteudo_pag').html(html_lay_empresa);
 
-                        $('#capa_perfil').css('background', 'url(' + resultado['empresa']['capa_caminho'] + resultado['empresa']['capa_img'] + ')').css('backgroundPosition', 'top center').css('backgroundRepeat', 'no-repeat').css('backgroundSize', 'auto 110%');
-                        $('#foto_perfil img').attr('src', resultado['empresa']['logo_caminho'] + resultado['empresa']['logo_img']);
-                        $('#nome_perfil').html(resultado['empresa']['razao_social_empresa']);
-                        $('#descricao_perfil').html(resultado['empresa']['slogan']);
-                        $('#id_empresa_finaliza').html(resultado['empresa']['id_empresa']);
+                            $('#capa_perfil').css('background', 'url(' + resultado['empresa']['capa_caminho'] + resultado['empresa']['capa_img'] + ')').css('backgroundPosition', 'top center').css('backgroundRepeat', 'no-repeat').css('backgroundSize', 'auto 110%');
+                            $('#foto_perfil img').attr('src', resultado['empresa']['logo_caminho'] + resultado['empresa']['logo_img']);
+                            $('#nome_perfil').html(resultado['empresa']['razao_social_empresa']);
+                            $('#descricao_perfil').html(resultado['empresa']['slogan']);
+                            $('#id_empresa_finaliza').html(resultado['empresa']['id_empresa']);
 
-                        id_empresa_finaliza = resultado['empresa']['id_empresa'];
+                            id_empresa_finaliza = resultado['empresa']['id_empresa'];
 
-                        var linhas_produtos = '';
-                        for (var i = 0; i < resultado['produtos'].length; i++) {
-                            linhas_produtos += '<div class="linha_menu">' +
-                                '<div class="preco_menu"><p class="preco_menu">R$ ' + resultado['produtos'][i]['valor_produtoF'] + '</p></div>' +
-                                '<div class="loja_menu">' +
-                                '<p class="nome_menu">' + resultado['produtos'][i]['produto'] + '</p>' +
-                                '<p class="descricao_menu">' + resultado['produtos'][i]['descricao'] + '</p>' +
-                                '</div>' +
-                                '<div class="op_menu">' +
-                                '<div class="menos_menu"><i class="fa fa-minus"></i></div>' +
-                                '<div class="quantidade_menu"><input class="id_produto" name="id_produto[]" id_produto="' + resultado['produtos'][i]['id_produto'] + '" nome_produto="' + resultado['produtos'][i]['produto'] + '" preco_produto="' + resultado['produtos'][i]['valor_produto'] + '" type="number" value="0" min="0" step="1"></div>' +
-                                '<div class="mais_menu"><i class="fa fa-plus"></i></div>' +
-                                '</div>' +
-                                '</div>';
+                            var linhas_produtos = '';
+                            for (var i = 0; i < resultado['produtos'].length; i++) {
+                                linhas_produtos += '<div class="linha_menu">' +
+                                    '<div class="preco_menu"><p class="preco_menu">R$ ' + resultado['produtos'][i]['valor_produtoF'] + '</p></div>' +
+                                    '<div class="loja_menu">' +
+                                    '<p class="nome_menu">' + resultado['produtos'][i]['produto'] + '</p>' +
+                                    '<p class="descricao_menu">' + resultado['produtos'][i]['descricao'] + '</p>' +
+                                    '</div>' +
+                                    '<div class="op_menu">' +
+                                    '<div class="menos_menu"><i class="fa fa-minus"></i></div>' +
+                                    '<div class="quantidade_menu"><input class="id_produto" name="id_produto[]" id_produto="' + resultado['produtos'][i]['id_produto'] + '" nome_produto="' + resultado['produtos'][i]['produto'] + '" preco_produto="' + resultado['produtos'][i]['valor_produto'] + '" type="number" value="0" min="0" step="1"></div>' +
+                                    '<div class="mais_menu"><i class="fa fa-plus"></i></div>' +
+                                    '</div>' +
+                                    '</div>';
+                            }
+
+                            $("#conteiner_linha_menu").html(linhas_produtos);
+
+                            $("#conteudo_pag").append(html_menu_rapido);
+
                         }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("Erro crítico, reinicie sua aplicação, se o problema persistir entre em contato com o suporte.");
+                    },
+                    complete: function (XMLHttpRequest, textStatus, errorThrown) {
 
-                        $("#conteiner_linha_menu").html(linhas_produtos);
-
-                        $("#conteudo_pag").append(html_menu_rapido);
-
+                        $.unblockUI();
                     }
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert("Erro crítico, reinicie sua aplicação, se o problema persistir entre em contato com o suporte.");
-                },
-                complete: function (XMLHttpRequest, textStatus, errorThrown) {
+                });
+            }else if(tipo == 'cliente'){
+                var id_cliente = $(this).attr('id_cliente');
+                jQuery.ajax({
+                    type: "POST",
+                    url: "http://vipsio.com.br/admin/api_2/consultar_cliente_api.php",
+                    data: { id_cliente: id_cliente, usuario: localStorage.usuario, token: localStorage.token },
+                    success: function (data) {
+                        var resultado = JSON.parse(data);
 
-                    $.unblockUI();
-                }
-            });
+                        if (resultado['return'] == 'sucesso') {
+
+                            $('#conteudo_pag').html(html_lay_cliente);
+
+                            $('#capa_perfil').css('background', 'url(' + resultado['cliente']['capa_caminho'] + resultado['cliente']['capa_img'] + ')').css('backgroundPosition', 'top center').css('backgroundRepeat', 'no-repeat').css('backgroundSize', 'auto 110%');
+                            $('#foto_perfil img').attr('src', resultado['cliente']['foto_perfil_caminho'] + resultado['cliente']['foto_perfil']);
+                            $('#nome_perfil').html(resultado['cliente']['usuario']);
+                            $('#descricao_perfil').html(resultado['cliente']['descricao']);
+
+                            /*
+                            var linhas_produtos = '';
+                            for (var i = 0; i < resultado['produtos'].length; i++) {
+                               
+                            }
+
+                            $("#conteiner_linha_menu").html(linhas_produtos);
+
+                            $("#conteudo_pag").append(html_menu_rapido);
+                            */
+
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("Erro crítico, reinicie sua aplicação, se o problema persistir entre em contato com o suporte.");
+                    },
+                    complete: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                        $.unblockUI();
+                    }
+                });
+            }
 
         });
 
@@ -1881,6 +1977,29 @@ $(document).ready(function () {
         });
 
         $("#conteudo_pag").append(html_menu_rapido);
+
+        $(document).on('keyup', '#pesquisar_in', function () {
+            $('#pesquisa_conteudo').html(carregando);
+            var pesquisa = $(this).val();
+            jQuery.ajax({
+                type: "POST",
+                url: "http://vipsio.com.br/admin/api_2/pesquisar_api.php",
+                data: {pesquisa:pesquisa, usuario: localStorage.usuario, token: localStorage.token, pesquisa_empresas:$('#pesquisa_empresas').is(':checked'), pesquisa_clientes:$('#pesquisa_clientes').is(':checked') },
+                success: function (data) {
+                    var resultado = JSON.parse(data);
+                    console.log(data);
+                    if(resultado['return'] == 'sucesso'){
+                        $('#pesquisa_conteudo').html(resultado['html']);
+                    }else{
+                        $("#pesquisa_conteudo").html('Nenhum resultado encontrado.');
+                    }
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Erro crítico, reinicie sua aplicação, se o problema persistir entre em contato com o suporte.");
+                }
+            });
+        });
     }
 
     $("input").focus(function (e) {
@@ -1906,6 +2025,7 @@ $(document).ready(function () {
             });
         }), 500);
     });
+
 
 
 });
