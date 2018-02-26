@@ -16,7 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
- var app = {
+
+var pictureSource;   // picture source
+var destinationType; // sets the format of returned value
+
+var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -38,6 +42,8 @@
 
         app.setupPush();
 
+        pictureSource = navigator.camera.PictureSourceType;
+        destinationType = navigator.camera.DestinationType;
     },
     setupPush: function() {
         console.log('calling push init');

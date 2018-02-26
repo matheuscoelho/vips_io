@@ -10,23 +10,9 @@ var link_pagseguro = 'https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/
 //var link_pagseguro = 'https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js';
 
 
-
-
-
-var pictureSource;   // picture source
-var destinationType; // sets the format of returned value
-
-document.addEventListener("deviceready", onDeviceReady, false);
-
-function onDeviceReady() {
-    pictureSource = navigator.camera.PictureSourceType;
-    destinationType = navigator.camera.DestinationType;
-}
-
 function clearCache() {
     navigator.camera.cleanup();
 }
-
 
 var retries = 0;
 function onCapturePhoto(fileURI) {
@@ -55,7 +41,7 @@ function onCapturePhoto(fileURI) {
     options.mimeType = "image/jpeg";
     options.params = {}; // if we need to send parameters to the server request
     var ft = new FileTransfer();
-    ft.upload(fileURI, encodeURI("http://host/upload"), win, fail, options);
+    ft.upload(fileURI, encodeURI("http://www.vipsio.com.br/admin/api_2/upload_fotos_api.php"), win, fail, options);
 }
 
 function capturePhoto() {
@@ -412,6 +398,7 @@ function carrega_bandeiras_credito() {
 }
 
 $(document).ready(function () {
+
 
     $('#menu_rapido div').click(function () {
         $('#menu_rapido div').removeClass('ativo');
@@ -1060,7 +1047,8 @@ $(document).ready(function () {
         });
 
         $(document).on('click', '#mr_camera', function () {
-           capturePhoto();
+            alert('teste');
+            capturePhoto();          
         });
 
         $(document).on('click', '#agendar_a', function () {
