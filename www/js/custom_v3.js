@@ -10,6 +10,36 @@ var link_pagseguro = 'https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/
 //var link_pagseguro = 'https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js';
 
 
+
+
+var list = [
+  permissions.CAMERA,
+  permissions.GET_ACCOUNTS
+];
+
+permissions.hasPermission(list, callback, null);
+
+function error() {
+  console.warn('Camera or Accounts permission is not turned on');
+}
+
+function success( status ) {
+  if( !status.hasPermission ) {
+  
+    permissions.requestPermissions(
+      list,
+      function(status) {
+        if( !status.hasPermission ) error();
+      },
+      error);
+  }
+}
+
+
+
+
+
+
 //não ta muito certo esse nome, esses são os dados para entrega sim, mas poderá ficar salvo como endereço pessoal tbm
 var dados_pessoais_entrega;
 

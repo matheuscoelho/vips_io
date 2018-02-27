@@ -16,6 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+ var permissions = cordova.plugins.permissions;
+ permissions.checkPermission(permission, successCallback, errorCallback);
+ permissions.requestPermission(permission, successCallback, errorCallback);
+ permissions.requestPermissions(permissions, successCallback, errorCallback);
+
  var app = {
     // Application Constructor
     initialize: function() {
@@ -89,10 +94,10 @@
            // var image = document.getElementById('myImage');
            // image.src = imageURI;
            alert(imageURI);
-        }
+       }
 
-        function onFail(message) {
-            alert('Failed because: ' + message);
-        }
+       function onFail(message) {
+        alert('Failed because: ' + message);
     }
+}
 };
