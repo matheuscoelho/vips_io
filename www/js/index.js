@@ -45,7 +45,11 @@
         }
 
         function success( status ) {
-          if( !status.hasPermission ) error();
+            if( !status.hasPermission ){
+                error();
+            }else{
+                alert('tem permissão');
+            }
         }
 
         app.setupPush();
