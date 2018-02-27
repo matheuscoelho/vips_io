@@ -37,7 +37,8 @@
         console.log('Received Device Ready Event');
         console.log('calling setup pushh');
 
-
+        var permissions = cordova.plugins.permissions;
+        
         var list = [
           permissions.CAMERA,
           permissions.GET_ACCOUNTS
