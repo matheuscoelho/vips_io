@@ -19,6 +19,9 @@
     },
     "cordova-plugin-android-permissions": {
       "PACKAGE_NAME": "com.phonegap.vipsio"
+    },
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "com.phonegap.vipsio"
     }
   },
   "dependent_plugins": {}

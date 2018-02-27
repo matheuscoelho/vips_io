@@ -26,7 +26,6 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
-        <uses-permission android:name="android.permission.CAMERA" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
@@ -37,5 +36,5 @@
     <plugin name="cordova-plugin-camera" spec="~4.0.2" />
     <plugin name="cordova-plugin-android-permissions" spec="~1.0.0" />
     <engine name="browser" spec="~5.0.3" />
-
+    <plugin name="cordova.plugins.diagnostic" spec="^3.9.2" />
 </widget>

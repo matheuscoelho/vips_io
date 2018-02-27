@@ -4,8 +4,50 @@
     "uninstalled": []
   },
   "config_munge": {
-    "files": {}
+    "files": {
+      "config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<feature name=\"Diagnostic\"><param name=\"android-package\" value=\"cordova.plugins.Diagnostic\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "AndroidManifest.xml": {
+        "parents": {
+          "/manifest/application": [
+            {
+              "xml": "<receiver android:name=\"cordova.plugins.Diagnostic$LocationProviderChangedReceiver\"><intent-filter><action android:name=\"android.location.PROVIDERS_CHANGED\" /></intent-filter></receiver>",
+              "count": 1
+            },
+            {
+              "xml": "<receiver android:name=\"cordova.plugins.Diagnostic$NFCStateChangedReceiver\"><intent-filter><action android:name=\"android.nfc.action.ADAPTER_STATE_CHANGED\" /></intent-filter></receiver>",
+              "count": 1
+            }
+          ]
+        }
+      }
+    }
   },
-  "installed_plugins": {},
-  "dependent_plugins": {}
+  "installed_plugins": {
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "com.phonegap.vipsio"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [
+    {
+      "id": "cordova.plugins.diagnostic.Diagnostic",
+      "file": "plugins/cordova.plugins.diagnostic/www/android/diagnostic.js",
+      "pluginId": "cordova.plugins.diagnostic",
+      "clobbers": [
+        "cordova.plugins.diagnostic"
+      ]
+    }
+  ],
+  "plugin_metadata": {
+    "cordova.plugins.diagnostic": "3.9.2"
+  }
 }

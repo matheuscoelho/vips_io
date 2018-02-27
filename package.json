@@ -6,7 +6,7 @@
   },
   "displayName": "helloworld",
   "dependencies": {
-    "cordova-android": "^6.0.0",
+    "cordova-android": "^6.3.0",
     "cordova-browser": "^5.0.3",
     "cordova-plugin-android-permissions": "^1.0.0",
     "cordova-plugin-camera": "^4.0.2",
@@ -21,7 +21,8 @@
       },
       "cordova-plugin-whitelist": {},
       "cordova-plugin-camera": {},
-      "cordova-plugin-android-permissions": {}
+      "cordova-plugin-android-permissions": {},
+      "cordova.plugins.diagnostic": {}
     },
     "platforms": [
       "browser"

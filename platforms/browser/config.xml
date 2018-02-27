@@ -11,6 +11,7 @@
     <icon src="res/icon.png" />
     <splash src="res/icon.png" />
     <access origin="*" />
+    <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

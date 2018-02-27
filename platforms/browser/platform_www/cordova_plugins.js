@@ -61,7 +61,8 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.3.3",
     "phonegap-plugin-push": "1.8.4",
     "cordova-plugin-camera": "4.0.2",
-    "cordova-plugin-android-permissions": "1.0.0"
+    "cordova-plugin-android-permissions": "1.0.0",
+    "cordova.plugins.diagnostic": "3.9.2"
 }
 // BOTTOM OF METADATA
 });
