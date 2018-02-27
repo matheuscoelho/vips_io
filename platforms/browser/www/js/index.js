@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
  var app = {
     // Application Constructor
     initialize: function() {
@@ -35,6 +36,31 @@
     onDeviceReady: function() {
         console.log('Received Device Ready Event');
         console.log('calling setup pushh');
+
+
+        var list = [
+          permissions.CAMERA,
+          permissions.GET_ACCOUNTS
+        ];
+
+        permissions.hasPermission(list, callback, null);
+
+        function error() {
+          console.warn('Camera or Accounts permission is not turned on');
+        }
+
+        function success( status ) {
+          if( !status.hasPermission ) {
+          
+            permissions.requestPermissions(
+              list,
+              function(status) {
+                if( !status.hasPermission ) error();
+              },
+              error);
+          }
+        }
+
 
         app.setupPush();
 
