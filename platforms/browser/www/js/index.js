@@ -82,7 +82,7 @@
         });
     },
     capturaFoto: function(){
-        navigator.camera.getPicture(this.onSuccess, this.onFail, { quality: 50,
+        navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
             destinationType: Camera.DestinationType.FILE_URI });
 
         function onSuccess(imageURI) {
