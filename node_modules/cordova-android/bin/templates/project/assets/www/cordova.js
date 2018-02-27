@@ -1,6 +1,5 @@
-/* eslint-disable */
 // Platform: android
-// 74a4adc2d0fddb1e0cfb9be1961494ef0afc9893
+// 53ea1913735222d326e65326e03391405df3cd4e
 /*
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -20,7 +19,7 @@
  under the License.
 */
 ;(function() {
-var PLATFORM_VERSION_BUILD_LABEL = '6.3.0';
+var PLATFORM_VERSION_BUILD_LABEL = '6.0.0';
 // file: src/scripts/require.js
 
 /*jshint -W079 */
