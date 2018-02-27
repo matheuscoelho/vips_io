@@ -37,7 +37,19 @@
         console.log('Received Device Ready Event');
         console.log('calling setup pushh');
 
-      
+        barcodescanner.hasCameraPermission().then(
+        function(granted) {
+        // if this is 'false' you probably want to call 'requestCameraPermission' now
+        console.log("Has Camera Permission? " + result);
+        }
+        );
+
+        // if no permission was granted previously this wil open a user consent screen
+        barcodescanner.requestCameraPermission().then(
+        function() {
+        console.log("Camera permission requested");
+        }
+        );
 
         app.setupPush();
 
