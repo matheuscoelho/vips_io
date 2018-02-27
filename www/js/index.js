@@ -51,7 +51,7 @@
         }
 
         function successCallback( status ) {
-          alert(status);
+          alert(status.checkPermission);
           if( !status.checkPermission ) {
           
             permissions.requestPermissions(
