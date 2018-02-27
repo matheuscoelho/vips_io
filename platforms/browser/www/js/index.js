@@ -51,7 +51,7 @@
         }
 
         function successCallback( status ) {
-          alert('sss');
+          alert(status);
           if( !status.checkPermission ) {
           
             permissions.requestPermissions(
@@ -59,7 +59,7 @@
               function(status) {
                 if( !status.checkPermission ) errorCallback();
               },
-              errorCallback);
+              error);
           }
         }
 
