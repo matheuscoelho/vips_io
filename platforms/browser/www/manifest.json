@@ -1,10 +1,10 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "Sr. Emílio",
-  "short_name": "Sr. Emílio",
-  "version": "com.phonegap.sremilio",
-  "description": "A barbearia desde 1948.",
+  "name": "Vips.IO",
+  "short_name": "Vips.IO",
+  "version": "com.phonegap.vipsio",
+  "description": "Viva livre de filas",
   "author": "Vips.IO",
   "icons": [
     {

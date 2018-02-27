@@ -16,6 +16,9 @@
     },
     "cordova-plugin-camera": {
       "PACKAGE_NAME": "com.phonegap.sremilio"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "com.phonegap.vipsio"
     }
   },
   "dependent_plugins": {}
