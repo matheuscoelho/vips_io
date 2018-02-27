@@ -39,28 +39,14 @@
 
         var permissions = cordova.plugins.permissions;
 
-        var list = [
-          permissions.CAMERA,
-          permissions.GET_ACCOUNTS
-        ];
+        permissions.requestPermission(permissions.CAMERA, success, error);
 
-        permissions.checkPermission(list, successCallback, errorCallback);
-
-        function errorCallback() {
-          alert('Camera or Accounts permission is not turned on');
+        function error() {
+          console.warn('Camera permission is not turned on');
         }
 
-        function successCallback( status ) {
-          alert(status.checkPermission);
-          if( !status.checkPermission ) {
-          
-            permissions.requestPermissions(
-              list,
-              function(status) {
-                if( !status.checkPermission ) errorCallback();
-              },
-              error);
-          }
+        function success( status ) {
+          if( !status.hasPermission ) error();
         }
 
 
