@@ -25,5 +25,4 @@
     <preference name="StatusBarBackgroundColor" value="#ee6e73" />
     <preference name="StatusBarStyle" value="blacktranslucent" />
     <preference name="fullscreen" value="false" />
-    <preference name="android-targetSdkVersion" value="22" />
 </widget>
