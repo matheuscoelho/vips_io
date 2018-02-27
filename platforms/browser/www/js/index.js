@@ -37,23 +37,7 @@
         console.log('Received Device Ready Event');
         console.log('calling setup pushh');
 
-        var permissions = cordova.plugins.permissions;
-        permissions.checkPermission(permissions.CAMERA, checkPermissionCallback, null);
-
-        function checkPermissionCallback(status) {
-          if(!status.checkPermission) {
-            var errorCallback = function() {
-              console.warn('Camera permission is not turned on');
-            }
-
-            permissions.requestPermission(
-              permissions.CAMERA,
-              function(status) {
-                if(!status.checkPermission) errorCallback();
-              },
-              errorCallback);
-          }
-        }
+      
 
         app.setupPush();
 
