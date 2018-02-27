@@ -38,16 +38,33 @@
         console.log('calling setup pushh');
 
 
-        cordova.plugins.diagnostic.requestCameraAuthorization({
-            successCallback: function(status){
-                alert("Authorization request for camera use was " + (status == cordova.plugins.diagnostic.permissionStatus.GRANTED ? "granted" : "denied"));
-            },
-            errorCallback: function(error){
-                alert(error);
-            },
-            externalStorage: false
-        });
+cordova.plugins.diagnostic.requestCameraAuthorization({
+    successCallback: function(status){
+        console.log("Authorization request for camera use was " + (status == cordova.plugins.diagnostic.permissionStatus.GRANTED ? "granted" : "denied"));
+    },
+    errorCallback: function(error){
+        console.error(error);
+    },
+    externalStorage: false
+});
 
+cordova.plugins.diagnostic.requestCameraAuthorization(
+    function(status){
+        console.log("Authorization request for camera use was " + (status == cordova.plugins.diagnostic.permissionStatus.GRANTED ? "granted" : "denied"));
+    }, function(error){
+        console.error("The following error occurred: "+error);
+    }, {
+        externalStorage: false
+    }
+);
+
+cordova.plugins.diagnostic.requestCameraAuthorization(
+    function(status){
+        console.log("Authorization request for camera use was " + (status == cordova.plugins.diagnostic.permissionStatus.GRANTED ? "granted" : "denied"));
+    }, function(error){
+        console.error("The following error occurred: "+error);
+    }, false
+);   
 
         var permissions = cordova.plugins.permissions;
         permissions.requestPermission(permissions.CAMERA, success, error);
