@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.sremilio" version="1.10.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Sr. Emílio</name>
+<widget id="com.phonegap.vipsio" version="1.10.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Vips.IO</name>
     <description>
-        A barbearia desde 1948.
+        Viva livre de filas
     </description>
     <author email="contato@vipsio.com.br" href="http://vipsio.com.br">
         Vips.IO
