@@ -38,7 +38,7 @@
         console.log('calling setup pushh');
 
         var permissions = cordova.plugins.permissions;
-        
+
         var list = [
           permissions.CAMERA,
           permissions.GET_ACCOUNTS
@@ -47,10 +47,11 @@
         permissions.hasPermission(list, callback, null);
 
         function error() {
-          console.warn('Camera or Accounts permission is not turned on');
+          alert('Camera or Accounts permission is not turned on');
         }
 
         function success( status ) {
+          alert('sss');
           if( !status.hasPermission ) {
           
             permissions.requestPermissions(
