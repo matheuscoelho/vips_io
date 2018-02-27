@@ -38,18 +38,22 @@
         console.log('calling setup pushh');
 
         var permissions = cordova.plugins.permissions;
+        permissions.hasPermission(permissions.CAMERA, checkPermissionCallback, null);
 
-        permissions.requestPermission(permissions.CAMERA, success, error);
+        function checkPermissionCallback(status) {
+          if(!status.hasPermission) {
+            var errorCallback = function() {
+              console.warn('Camera permission is not turned on');
+            }
 
-        function error() {
-          console.warn('Camera permission is not turned on');
+            permissions.requestPermission(
+              permissions.CAMERA,
+              function(status) {
+                if(!status.hasPermission) errorCallback();
+              },
+              errorCallback);
+          }
         }
-
-        function success( status ) {
-          if( !status.hasPermission ) error();
-          alert('a');
-        }
-
 
         app.setupPush();
 
