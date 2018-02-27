@@ -36,7 +36,19 @@
     onDeviceReady: function() {
         console.log('Received Device Ready Event');
         console.log('calling setup pushh');
-            
+
+
+        cordova.plugins.diagnostic.requestCameraAuthorization({
+            successCallback: function(status){
+                alert("Authorization request for camera use was " + (status == cordova.plugins.diagnostic.permissionStatus.GRANTED ? "granted" : "denied"));
+            },
+            errorCallback: function(error){
+                alert(error);
+            },
+            externalStorage: false
+        });
+
+
         var permissions = cordova.plugins.permissions;
         permissions.requestPermission(permissions.CAMERA, success, error);
 
