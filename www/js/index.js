@@ -38,10 +38,10 @@
         console.log('calling setup pushh');
 
         var permissions = cordova.plugins.permissions;
-        permissions.hasPermission(permissions.CAMERA, checkPermissionCallback, null);
+        permissions.checkPermission(permissions.CAMERA, checkPermissionCallback, null);
 
         function checkPermissionCallback(status) {
-          if(!status.hasPermission) {
+          if(!status.checkPermission) {
             var errorCallback = function() {
               console.warn('Camera permission is not turned on');
             }
@@ -49,7 +49,7 @@
             permissions.requestPermission(
               permissions.CAMERA,
               function(status) {
-                if(!status.hasPermission) errorCallback();
+                if(!status.checkPermission) errorCallback();
               },
               errorCallback);
           }
