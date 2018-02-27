@@ -36,8 +36,21 @@
     onDeviceReady: function() {
         console.log('Received Device Ready Event');
         console.log('calling setup pushh');
+            
+        var permissions = cordova.plugins.permissions;
+        permissions.requestPermission(permissions.CAMERA, success, error);
 
+        function error() {
+            alert('n permissão');
+        }
 
+        function success( status ) {
+            if( !status.hasPermission ){
+                error();
+            }else{
+                alert('tem permissão');
+            }
+        }
 
         app.setupPush();
 
