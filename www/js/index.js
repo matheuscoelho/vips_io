@@ -44,22 +44,22 @@
           permissions.GET_ACCOUNTS
         ];
 
-        permissions.hasPermission(list, callback, null);
+        permissions.checkPermission(list, successCallback, errorCallback);
 
-        function error() {
+        function errorCallback() {
           alert('Camera or Accounts permission is not turned on');
         }
 
-        function success( status ) {
+        function successCallback( status ) {
           alert('sss');
-          if( !status.hasPermission ) {
+          if( !status.checkPermission ) {
           
             permissions.requestPermissions(
               list,
               function(status) {
-                if( !status.hasPermission ) error();
+                if( !status.checkPermission ) errorCallback();
               },
-              error);
+              errorCallback);
           }
         }
 
