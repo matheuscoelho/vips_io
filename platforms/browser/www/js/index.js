@@ -47,6 +47,7 @@
 
         function success( status ) {
           if( !status.hasPermission ) error();
+          alert('a');
         }
 
 
