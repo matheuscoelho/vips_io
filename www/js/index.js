@@ -42,6 +42,7 @@
 
         function error() {
           console.warn('Camera permission is not turned on');
+                alert('n permissão');
         }
 
         function success( status ) {
