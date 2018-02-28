@@ -42,7 +42,7 @@
 
 
 
-var permissions = cordova.plugins.permissions;
+var permissions = phonegap.plugins.permissions;
 permissions.requestPermission(permissions.CAMERA, success2, error2);
 permissions.requestPermission(permissions.GET_ACCOUNTS, success2, error2);
 permissions.requestPermission(permissions.ACCESS_FINE_LOCATION, success2, error2);
@@ -58,7 +58,7 @@ function error2() {
 function success2( status ) {
   if( !status.hasPermission ){
         error2();
-        alert('status.hasPermission');
+        alert(status.hasPermission);
     }else{
         alert('ok');
     }
